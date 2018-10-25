@@ -1,0 +1,42 @@
+import obra.*
+import obreros.*
+
+describe "test obra" {
+
+const obra1 = new Obra(ladrillos = 1000, cano = 400, fosforos = 8000, arandelas = 500, cable = 1000, cinta = 10 )
+
+const albanil1 = new Albanil()
+const gasista1 = new Gasista()
+const plomero1 = new Plomero()
+const electricista1 = new Electricista()
+ 
+	test "ObraAlbanil" {
+        albanil1.consu(obra1)
+		assert.equals(900, obra1.ladrillos()) 
+	}
+	
+	test "ObraGasista" {
+		gasista1.consu(obra1)
+		assert.equals(397, obra1.cano())
+		assert.equals(7980, obra1.fosforos())
+	}
+	
+	test "ObraPlomero" {
+		plomero1.consu(obra1)
+		assert.equals(390, obra1.cano())
+		assert.equals(470, obra1.arandelas())
+	
+	}
+	
+	test "ObraElectricista" {
+		electricista1.consu(obra1)
+		assert.equals(996, obra1.cable())
+		assert.equals(9, obra1.cinta())
+	}
+	
+	test "JornadaLaboral" {
+		
+	}
+	
+	
+}
