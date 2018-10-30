@@ -1,9 +1,21 @@
 import obra.*
+import uocra.*
 
 class Obrero{
+	var property licencia = false
+	var property diasAdeudados = 0
 	var property obreros = true
 	
+//	method sumarDiaTrabajado() { diasAdeudados += 1}
+    method iniciarLicencia() { licencia = true }
+    method finalizarLicencia() { licencia = false }
+    method estaDeLicencia() { return licencia }
+    method sueldoPendiente() { return diasAdeudados*self.sueldoPorJornal()}
+    method sueldoPorJornal()
+    method cobrarSueldo() { diasAdeudados = 0 }
+
 	method consu(obra)
+	
 }
 
 class Albanil inherits Obrero {

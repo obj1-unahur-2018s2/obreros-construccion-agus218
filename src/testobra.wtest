@@ -34,9 +34,9 @@ const electricista1 = new Electricista()
 		assert.equals(9, obra1.cinta())
 	}
 	
-	test "JornadaLaboral" {
-		
-	}
+//	test "JornadaLaboral" {
+//		
+//	}
 	
 	
 }

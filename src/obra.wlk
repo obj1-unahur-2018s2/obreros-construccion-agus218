@@ -12,10 +12,19 @@ class Obra {
 	var property canoAgua = 0
 	var property cinta = 0
 	
+	var property presupuesto = 0
 	
-	method agregarObreros(obrero) { obreros.add(obrero)}
-	method obrerosDisponibles() { obrero => not obrero.licencia()}
-	method registrarJornadaLaboral() { self.obrerosDisponibles().obreros.forEach{ obrero => obrero.consu(self) } }
+	
+	
+	method agregarObreros(obrero) { obreros.add(obrero) }
+	method quitarObreros(obrero) { obreros.remove(obrero) }
+	method obrerosDisponibles() { return obreros.filter 
+		({obrero => not obrero.licencia()})
+	}
+	method registrarJornadaLaboral() { 
+		self.obrerosDisponibles().forEach({ obrero => obrero.consu(self) })
+	}
+	
 	
     method restarLadrillos(lad) { ladrillos = ladrillos - lad }
 	method restarCano(canio) { cano = cano - canio}
