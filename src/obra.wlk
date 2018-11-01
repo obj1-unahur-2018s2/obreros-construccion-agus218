@@ -15,16 +15,23 @@ class Obra {
 	var property presupuesto = 0
 	
 	
-	
 	method agregarObreros(obrero) { obreros.add(obrero) }
-	method quitarObreros(obrero) { obreros.remove(obrero) }
+	method quitarObreros(obrero) { 
+		if (obrero.estaDeLicencia()) {
+			self.error( "Las leyes laborales están para respetarse - licencia implica estabilidad laboral")
+		}
+		
+		obreros.remove(obrero)
+	}
 	method obrerosDisponibles() { return obreros.filter 
 		({obrero => not obrero.licencia()})
 	}
 	method registrarJornadaLaboral() { 
+		if (self.obrerosDisponibles().isEmpty()) {
+			self.error("No hay obreros disponibles para trabajar")
+		}
 		self.obrerosDisponibles().forEach({ obrero => obrero.consu(self) })
 	}
-	
 	
     method restarLadrillos(lad) { ladrillos = ladrillos - lad }
 	method restarCano(canio) { cano = cano - canio}
@@ -37,6 +44,4 @@ class Obra {
 //	method instalacionDeAgua(metrosDeCanos)
 //	method instalacionElectrica(metrosDeCable)
 //	method instalacionDeGas(metrosDeCano)
-	
-	
 }
